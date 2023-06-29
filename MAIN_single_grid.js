@@ -528,6 +528,7 @@ sim.colony.update = function() {
             sim.colony.bottleneck(0.99);    // calls the bottleneck function
         }
     }
+    sim.colony.writeOut();	
 }
 
 sim.resources.update = function() {
@@ -554,7 +555,6 @@ sim.resources.update = function() {
     this.plotArray(["Monomer count"], [sum_m/(this.nr*this.nc)], ['violet'], ["Monomer"])
 }
 
-sim.colony.writeOut();
 sim.initialise();
 sim.start();
 
