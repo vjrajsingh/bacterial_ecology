@@ -8,4 +8,5 @@ The bacteria being simulated are of the cooperator, cheater and privatiser strat
 
 Bram's blog - https://thevirtuallaboratory.com/blog
 cacatoo webpage - https://bramvandijk88.github.io/cacatoo/#
+Paper by Bram introducing cacatoo - https://hdl.handle.net/21.11116/0000-0009-FB6B-5
 Referenced paper - https://doi.org/10.1038/ncomms12860
