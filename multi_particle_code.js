@@ -227,7 +227,7 @@ else {
 
 /*if (typeof argv.resource_threshold !== "undefined") {
 	resource_threshold = argv.resource_threshold
-	console.log("Critical resource value after which resources  -- user specified", resource_threshold)
+	console.log("Critical resource value after which resources refresh -- user specified", resource_threshold)
 } 
 else {
 	console.log("Critical resource value after which resources \t", resource_threshold)
@@ -257,12 +257,12 @@ else {
     console.log("Time interval between migrations\t", migration_time)
 }
 
-if (typeof argv.destroyed_ !== "undefined") {
-    destroyed_ = argv.destroyed_
-    console.log("Randomly destroyed grid replacement rate -- user specified", destroyed_)
+if (typeof argv.destroyed_refresh !== "undefined") {
+    destroyed_refresh = argv.destroyed_refresh
+    console.log("Randomly destroyed grid replacement rate -- user specified", destroyed_refresh)
 }
 else {
-    console.log("Randomly destroyed grid replacement speed\t", destroyed_)
+    console.log("Randomly destroyed grid replacement speed\t", destroyed_refresh)
 }
 
 if (typeof argv.diffusion_rate !== "undefined") {
@@ -414,7 +414,7 @@ let final_result = `output/results/result_run_${run_num}_poly_${starting_polymer
     fs.unlinkSync(final_result)
 }*/
 
-let destroyed__final = destroyed_ / dT
+let destroyed_refresh_final = destroyed_refresh / dT
 let diff_interval_final = diff_interval / dT
 
 let aly_broadcaster = aly_b * dT
@@ -437,7 +437,7 @@ fs.appendFileSync(run_info, "Enzyme value for broadcasters =\t"+aly_b+"\n"+"Enzy
 fs.appendFileSync(run_info, "Michaelis-Menten constant (polymer) =\t"+MM_polymers+"\n"+"Michaelis-Menten constant (monomer) =\t"+MM_monomers+"\n")
 fs.appendFileSync(run_info, "Perfectly mixed? =\t"+mix+"\n"+"Margolus Diffusion? =\t"+mar_diffusion+"\n"/*+"Public Goods Operon? =\t"+PG_switch+"\n"*/)
 fs.appendFileSync(run_info, "Write out interval =\t"+data_interval+"\n"+"Image capture interval =\t"+image_interval+"\n"/*+"Resource  interval =\t"+resource_threshold+"\n"*/+"Polymer units per grid point =\t"+starting_polymer_value+"\n"+"Oligomer diffusion rate =\t"+diffusion_rate+"\n")
-fs.appendFileSync(run_info, "Time interval between migrations =\t"+migration_time+"\n"+"Grid recovery rate after destruction =\t"+destroyed_+"\n"+"Time interval between diffusions or mixing =\t"+diff_interval+"\n")
+fs.appendFileSync(run_info, "Time interval between migrations =\t"+migration_time+"\n"+"Grid recovery rate after destruction =\t"+destroyed_refresh+"\n"+"Time interval between diffusions or mixing =\t"+diff_interval+"\n")
 fs.appendFileSync(run_info, "Ratio of broadcaster to tetherer to cheater =\t"+broadcaster_fraction+":"+tetherer_fraction+":"+cheater_fraction+"\t")
 fs.appendFileSync(run_info, "Total number of grids in the system =\t"+numGrids+"\t"+"Taking png? =\t"+take_png+"\n"+"Taking txt? =\t"+take_txt+"\n")
 
@@ -550,8 +550,8 @@ for (let x = 0; x < resourcesGridModels.length; x++) {
     let resources = resourcesGridModels[x];
     //let colonies = colonyGridModels[x];
     resources.gridNumber = x;
-    resources.Counter = 0;
-    resources.uID = `${resources.gridNumber}-${resources.Counter}`;
+    resources.refreshCounter = 0;
+    resources.uID = `${resources.gridNumber}-${resources.refreshCounter}`;
     //colonies.imageCaptureState = false
     //console.log(resources.uID)
 }
